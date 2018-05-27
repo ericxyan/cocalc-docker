@@ -141,6 +141,9 @@ RUN \
 
 RUN echo "umask 077" >> /etc/bash.bashrc
 
+# Create python env for new kernels
+RUN /opt/conda/bin/conda create -n sympy python=3.6 sympy
+
 # Install R Jupyter Kernel package into R itself (so R kernel works)
 RUN echo "install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'httr', 'devtools', 'uuid', 'digest'), repos='http://cran.us.r-project.org'); devtools::install_github('IRkernel/IRkernel')" | sage -R --no-save
 
